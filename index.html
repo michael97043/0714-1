@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f47c20">
+  <title>大愛社區中元普渡祭祀活動報名</title>
+
+  <style>
+    :root {
+      --orange: #f47c20;
+      --orange-dark: #d95f08;
+      --orange-light: #fff1e6;
+      --white: #ffffff;
+      --text: #3e312b;
+      --muted: #76665e;
+      --border: #f2c6a8;
+      --success: #278447;
+      --shadow: 0 14px 35px rgba(134, 69, 24, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, #ffe1c8 0, transparent 35%),
+        linear-gradient(145deg, #fffaf6, #fff0e4);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 22px 16px 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .header {
+      position: relative;
+      overflow: hidden;
+      padding: 32px 22px 30px;
+      color: var(--white);
+      text-align: center;
+      background: linear-gradient(135deg, #ff9b43, var(--orange));
+      border-radius: 24px 24px 0 0;
+      box-shadow: var(--shadow);
+    }
+
+    .header::before,
+    .header::after {
+      position: absolute;
+      content: "";
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .header::before {
+      width: 145px;
+      height: 145px;
+      top: -70px;
+      right: -45px;
+    }
+
+    .header::after {
+      width: 100px;
+      height: 100px;
+      bottom: -55px;
+      left: -25px;
+    }
+
+    .event-icon {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 16px;
+      font-size: 42px;
+      background: var(--white);
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(107, 48, 9, 0.18);
+    }
+
+    .header h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(25px, 7vw, 36px);
+      line-height: 1.35;
+      letter-spacing: 0.05em;
+    }
+
+    .header p {
+      position: relative;
+      z-index: 1;
+      margin: 10px 0 0;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      opacity: 0.96;
+    }
+
+    .content {
+      padding: 24px 20px 28px;
+      background: var(--white);
+      border-radius: 0 0 24px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .event-info {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 26px;
+      padding: 18px;
+      background: var(--orange-light);
+      border: 1px solid #ffd5b7;
+      border-radius: 18px;
+    }
+
+    .info-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      font-size: 18px;
+      background: var(--white);
+      border-radius: 50%;
+    }
+
+    .info-label {
+      margin-right: 6px;
+      color: var(--orange-dark);
+      font-weight: 700;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      font-size: 21px;
+      color: var(--orange-dark);
+    }
+
+    .section-title::before {
+      width: 6px;
+      height: 24px;
+      content: "";
+      background: var(--orange);
+      border-radius: 999px;
+    }
+
+    .form-group {
+      margin-bottom: 19px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .required {
+      margin-left: 3px;
+      color: var(--orange-dark);
+    }
+
+    input {
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 15px;
+      color: var(--text);
+      background: #fffdfb;
+      border: 2px solid #ead8cc;
+      border-radius: 13px;
+      outline: none;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+    }
+
+    input::placeholder {
+      color: #ad9d94;
+    }
+
+    input:focus {
+      background: var(--white);
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px rgba(244, 124, 32, 0.13);
+    }
+
+    input:invalid:not(:placeholder-shown) {
+      border-color: #d94747;
+    }
+
+    .hint {
+      margin: 7px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .submit-button {
+      width: 100%;
+      min-height: 56px;
+      margin-top: 5px;
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #ff973b, var(--orange-dark));
+      border: 0;
+      border-radius: 15px;
+      box-shadow: 0 9px 20px rgba(217, 95, 8, 0.24);
+      cursor: pointer;
+      transition:
+        transform 0.15s,
+        box-shadow 0.15s,
+        opacity 0.15s;
+    }
+
+    .submit-button:hover {
+      box-shadow: 0 12px 25px rgba(217, 95, 8, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .submit-button:active {
+      box-shadow: 0 5px 12px rgba(217, 95, 8, 0.23);
+      transform: translateY(1px);
+    }
+
+    .submit-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.65;
+      transform: none;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      color: #17612f;
+      text-align: center;
+      background: #eaf8ee;
+      border: 1px solid #a9dcb8;
+      border-radius: 14px;
+      line-height: 1.7;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .success-message strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 19px;
+      color: var(--success);
+    }
+
+    .footer {
+      padding: 22px 10px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .page {
+        padding: 0;
+      }
+
+      .container {
+        max-width: none;
+      }
+
+      .header,
+      .content {
+        border-radius: 0;
+      }
+
+      .header {
+        padding-top: 28px;
+      }
+
+      .content {
+        min-height: calc(100vh - 250px);
+        padding: 23px 17px 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="container">
+      <header class="header">
+        <div class="event-icon" aria-hidden="true">🙏</div>
+        <h1>大愛社區<br>中元普渡祭祀活動</h1>
+        <p>誠摯邀請社區住戶共同參與</p>
+      </header>
+
+      <section class="content">
+        <div class="event-info" aria-label="活動資訊">
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">📅</div>
+            <div>
+              <span class="info-label">日期</span>
+              8 月 22 日（星期六）
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">🕑</div>
+            <div>
+              <span class="info-label">時間</span>
+              下午 2：00～5：00
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">📍</div>
+            <div>
+              <span class="info-label">地點</span>
+              大愛社區中庭廣場
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">🎟️</div>
+            <div>
+              <span class="info-label">費用</span>
+              社區住戶免費
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-title">住戶報名資料</h2>
+
+        <form id="registrationForm">
+          <div class="form-group">
+            <label for="household">
+              戶號<span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="household"
+              name="household"
+              placeholder="例如：A棟 3-38"
+              maxlength="30"
+              autocomplete="off"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="participants">
+              參加人數<span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="number"
+              id="participants"
+              name="participants"
+              placeholder="請輸入參加人數"
+              min="1"
+              max="20"
+              inputmode="numeric"
+              required
+            >
+            <p class="hint">請填寫實際參加活動的總人數。</p>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">
+              聯絡電話<span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="例如：0912-345-678"
+              maxlength="20"
+              inputmode="tel"
+              autocomplete="tel"
+              pattern="^[0-9+\-() ]{8,20}$"
+              required
+            >
+            <p class="hint">請留下可聯絡的手機或市內電話。</p>
+          </div>
+
+          <button type="submit" class="submit-button" id="submitButton">
+            確認送出報名
+          </button>
+
+          <div
+            class="success-message"
+            id="successMessage"
+            role="status"
+            aria-live="polite"
+          >
+            <strong>報名成功！</strong>
+            感謝您的參與，期待活動當天與您相見。
+          </div>
+        </form>
+      </section>
+
+      <footer class="footer">
+        大愛社區管理中心 敬上<br>
+        報名資料僅供本次活動聯絡與人數統計使用
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById("registrationForm");
+    const submitButton = document.getElementById("submitButton");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const registrationData = {
+        household: document.getElementById("household").value.trim(),
+        participants: Number(
+          document.getElementById("participants").value
+        ),
+        phone: document.getElementById("phone").value.trim(),
+        submittedAt: new Date().toISOString()
+      };
+
+      console.log("活動報名資料：", registrationData);
+
+      submitButton.disabled = true;
+      submitButton.textContent = "報名已送出";
+      successMessage.classList.add("show");
+      successMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    });
+  </script>
+</body>
+</html>
